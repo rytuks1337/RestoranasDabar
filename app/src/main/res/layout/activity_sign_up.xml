@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".SignIn"
+
+    >
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/edtName"
+            android:hint="Name"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:inputType="text"
+            />
+        <EditText
+            android:id="@+id/edtSurname"
+            android:hint="Last Name"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:inputType="text"
+            />
+        <EditText
+            android:id="@+id/edtEMail"
+            android:hint="E-Mail"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:inputType="textEmailAddress"
+            />
+        <EditText
+            android:id="@+id/edtPhone"
+            android:hint="Phone Number"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:inputType="phone"
+            />
+        <EditText
+            android:id="@+id/edtPsw1"
+            android:hint="Password"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:inputType="textPassword"
+            />
+        <EditText
+            android:id="@+id/edtPsw2"
+            android:hint="Confirm password"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:inputType="textPassword"
+            />
+
+
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Sign Up"
+        android:background="@color/btnSignUp"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        />
+
+</RelativeLayout>
