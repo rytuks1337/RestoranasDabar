@@ -4,6 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Admin/AndroidStudioProjects/RestoranasDabar/app/src/main/res/layout/content_main.xml" value="0.353713768115942" />
+        <entry key="..\:/Users/simon/AndroidStudioProjects/RestoranasDabar3/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2985" />
+        <entry key="..\:/Users/simon/AndroidStudioProjects/RestoranasDabar3/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2985" />
+        <entry key="..\:/Users/simon/AndroidStudioProjects/RestoranasDabar3/app/src/main/res/drawable/ic_menu_camera.xml" value="0.2985" />
+        <entry key="..\:/Users/simon/AndroidStudioProjects/RestoranasDabar3/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.2985" />
+        <entry key="..\:/Users/simon/AndroidStudioProjects/RestoranasDabar3/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.2985" />
+        <entry key="..\:/Users/simon/AndroidStudioProjects/RestoranasDabar3/app/src/main/res/drawable/side_nav_bar.xml" value="0.2985" />
+        <entry key="..\:/Users/simon/AndroidStudioProjects/RestoranasDabar3/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/simon/AndroidStudioProjects/RestoranasDabar3/app/src/main/res/layout/activity_sign_in.xml" value="0.35688405797101447" />
+        <entry key="..\:/Users/simon/AndroidStudioProjects/RestoranasDabar3/app/src/main/res/layout/activity_sign_up.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/simon/AndroidStudioProjects/RestoranasDabar3/app/src/main/res/layout/app_bar_main.xml" value="0.35688405797101447" />
+        <entry key="..\:/Users/simon/AndroidStudioProjects/RestoranasDabar3/app/src/main/res/layout/content_main.xml" value="0.35688405797101447" />
+        <entry key="..\:/Users/simon/AndroidStudioProjects/RestoranasDabar3/app/src/main/res/layout/fragment_gallery.xml" value="0.35688405797101447" />
+        <entry key="..\:/Users/simon/AndroidStudioProjects/RestoranasDabar3/app/src/main/res/layout/fragment_home.xml" value="0.35688405797101447" />
+        <entry key="..\:/Users/simon/AndroidStudioProjects/RestoranasDabar3/app/src/main/res/layout/fragment_slideshow.xml" value="0.35688405797101447" />
+        <entry key="..\:/Users/simon/AndroidStudioProjects/RestoranasDabar3/app/src/main/res/layout/nav_header_main.xml" value="0.35688405797101447" />
       </map>
     </option>
   </component>
