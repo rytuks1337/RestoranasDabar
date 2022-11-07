@@ -26,8 +26,6 @@ public class SignUp extends AppCompatActivity {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                //Starting Write and Read data with URL
-                //Creating array for parameters
                 String[] field = new String[5];
                 field[0] = "Name";
                 field[1] = "Surname";
@@ -48,7 +46,6 @@ public class SignUp extends AppCompatActivity {
                         String result = putData.getResult();
                     }
                 }
-                //End Write and Read data with URL
             }
         });
     }
