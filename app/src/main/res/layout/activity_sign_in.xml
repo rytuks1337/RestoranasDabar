@@ -20,7 +20,7 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/edtEMail"
+            android:id="@+id/edtEMailIn"
             android:hint="E-Mail"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:inputType="textPassword"
             />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/btnSignIn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -68,7 +68,7 @@
             android:textColor="@color/white"
             android:text="Don't have an account?" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/btnSignUp"
             android:layout_width="100dp"
             android:layout_height="50dp"
