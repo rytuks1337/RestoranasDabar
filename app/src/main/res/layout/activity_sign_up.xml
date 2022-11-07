@@ -83,6 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="67dp"
             android:layout_marginLeft="8dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="8dp"
             android:text="Sign Up"
             android:background="@color/btnSignUp"
@@ -103,7 +104,7 @@
             android:id="@+id/tvSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="170dp"
+            android:layout_marginStart="140dp"
             android:layout_marginTop="20dp"
             android:textColor="@color/white"
             android:text="Have an account?" />
