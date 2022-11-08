@@ -21,6 +21,9 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        Intent intent = new Intent(getApplicationContext(), Menu_restaurant.class);
+        startActivity(intent);
+        finish();
         i_name= findViewById(R.id.edtName);
         i_surname= findViewById(R.id.edtSurname);
         i_password= findViewById(R.id.edtPsw1);

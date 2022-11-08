@@ -64,7 +64,6 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:orientation="horizontal">
 
         <TextView
@@ -84,7 +83,6 @@
             android:layout_marginRight="8dp"
             android:layout_marginBottom="9dp"
             android:background="@color/btnSignUp"
-
             android:text="Sign Up"
             android:textColor="@color/white"
             app:cornerRadius="10dp" />
