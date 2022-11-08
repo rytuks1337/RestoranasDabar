@@ -46,13 +46,13 @@ public class SignIn extends AppCompatActivity {
                             data[0] = email;
                             data[1] = password;
 
-                            PutData putData = new PutData("http://192.168.56.1/databaseIn/login.php", "POST", field, data);
+                            PutData putData = new PutData("https://9d4b-193-219-164-7.eu.ngrok.io/databaseIn/login.php", "POST", field, data);
 
 
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
-
+                                    Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
                                     if(result.equals("Success")){
                                         Toast.makeText(getApplicationContext(),"Succesfull Connection",Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
