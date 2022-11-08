@@ -46,7 +46,7 @@ public class SignIn extends AppCompatActivity {
                             data[0] = email;
                             data[1] = password;
 
-                            PutData putData = new PutData("https://9d4b-193-219-164-7.eu.ngrok.io/databaseIn/login.php", "POST", field, data);
+                            PutData putData = new PutData("http://185.80.130.112/login.php", "POST", field, data);
 
 
                             if (putData.startPut()) {
