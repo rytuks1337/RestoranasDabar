@@ -22,14 +22,13 @@
                 app:contentScrim="#0e0d0e"
                 app:expandedTitleTextAppearance="@android:color/transparent"
                 >
-                <ImageView
-                    android:id="@+id/menu_img_rest"
-                    android:layout_width="match_parent"
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/menu_imageslider"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:src="@drawable/res1"
-                    android:contentDescription="@null"
-                    android:scaleType="centerCrop"
-                    app:layout_collapseMode="parallax"/>
+                    app:iss_auto_cycle="true"
+                    app:iss_period="1000"
+                    app:iss_delay="0"/>
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/menu_toolbar"
                     app:title="Restaurant Name"
