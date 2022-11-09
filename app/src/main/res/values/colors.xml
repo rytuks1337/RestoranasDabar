@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="btnSignUp">#39796b</color>
     <color name="btnSignActive">#A9d440</color>
+    <color name="primary">#ec004e</color>
+    <color name="secondary">#e07401</color>
+    <color name="extra">#E0A801</color>
 </resources>

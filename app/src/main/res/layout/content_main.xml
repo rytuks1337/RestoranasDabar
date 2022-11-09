@@ -20,6 +20,7 @@
             android:layout_gravity="center"
             card_view:cardElevation="20dp"
             android:layout_width="match_parent"
+            android:onClick=""
             android:layout_weight="1"
             android:layout_height="200dp"
             android:layout_margin="20dp"
@@ -80,7 +81,7 @@
 
                     <TextView
                         android:id="@+id/textLocation"
-                        android:drawableLeft="@drawable/place"
+                        android:drawableLeft="@drawable/ic_place"
                         android:drawablePadding="2dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -91,7 +92,7 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"/>
                     <TextView
                         android:id="@+id/textSchedule"
-                        android:drawableLeft="@drawable/clock"
+                        android:drawableLeft="@drawable/ic_clock"
                         android:drawablePadding="2dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -102,7 +103,7 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"/>
                     <TextView
                         android:id="@+id/textNumb"
-                        android:drawableLeft="@drawable/call"
+                        android:drawableLeft="@drawable/ic_call"
                         android:drawablePadding="2dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
