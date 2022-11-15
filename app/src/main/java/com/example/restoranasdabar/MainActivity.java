@@ -8,11 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.viewpager2.widget.ViewPager2;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mNavDrawer;
+    ViewPager2 toprestaurants_pager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
