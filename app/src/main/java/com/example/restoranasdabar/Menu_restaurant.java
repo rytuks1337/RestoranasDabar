@@ -2,7 +2,9 @@ package com.example.restoranasdabar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -23,5 +25,14 @@ public class Menu_restaurant extends AppCompatActivity {
         images.add(new SlideModel(R.drawable.res2, null));
         images.add(new SlideModel(R.drawable.res3, null));
         imageSlider.setImageList(images, ScaleTypes.CENTER_CROP);
+
+    }
+
+    public void openMenuSelector(View view){
+        Intent menu_select = new Intent(this, Menu_selector.class);
+        startActivity(menu_select);
+    }
+    public void onClose(View view){
+        finish();
     }
 }
