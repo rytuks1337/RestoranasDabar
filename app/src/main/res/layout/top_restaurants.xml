@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,10 +8,11 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/top_res_info"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="330dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="50dp"
+        android:layout_marginBottom="30dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +27,9 @@
                 android:id="@+id/top_res_img"
                 android:layout_width="250dp"
                 android:layout_height="160dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
                 app:cardCornerRadius="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +47,7 @@
                 android:id="@+id/top_res_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="sans-serif-black"
                 android:text="Res Name"
@@ -52,15 +56,17 @@
                 app:layout_constraintStart_toStartOf="@+id/top_res_img"
                 app:layout_constraintTop_toBottomOf="@+id/top_res_img" />
 
-            <ImageView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/ic1"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="10dp"
-                android:tint="#000000"
+                android:foreground="@drawable/ic_place"
+                android:foregroundTint="@color/black"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp"
                 app:layout_constraintStart_toStartOf="@+id/top_res_name"
-                app:layout_constraintTop_toBottomOf="@+id/top_res_name"
-                app:srcCompat="@drawable/ic_place" />
+                app:layout_constraintTop_toBottomOf="@+id/top_res_name" />
 
             <TextView
                 android:id="@+id/top_res_location"
@@ -69,20 +75,22 @@
                 android:layout_marginStart="8dp"
                 android:text="TextView"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toTopOf="@+id/ic2"
+                app:layout_constraintBottom_toBottomOf="@+id/ic1"
                 app:layout_constraintStart_toEndOf="@+id/ic1"
                 app:layout_constraintTop_toTopOf="@+id/ic1"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="1.0" />
 
-            <ImageView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/ic2"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="6dp"
-                android:tint="@color/black"
+                android:foreground="@drawable/ic_call"
+                android:foregroundTint="@color/black"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp"
                 app:layout_constraintStart_toStartOf="@+id/ic1"
-                app:layout_constraintTop_toBottomOf="@+id/ic1"
-                app:srcCompat="@drawable/ic_call" />
+                app:layout_constraintTop_toBottomOf="@+id/ic1" />
 
             <TextView
                 android:id="@+id/top_res_numb"
@@ -91,19 +99,22 @@
                 android:layout_marginStart="8dp"
                 android:text="TextView"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toTopOf="@+id/ic3"
+                app:layout_constraintBottom_toBottomOf="@+id/ic2"
                 app:layout_constraintStart_toEndOf="@+id/ic2"
-                app:layout_constraintTop_toBottomOf="@+id/ic1" />
+                app:layout_constraintTop_toTopOf="@+id/ic2"
+                app:layout_constraintVertical_bias="1.0" />
 
-            <ImageView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/ic3"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="6dp"
+                android:foreground="@drawable/ic_clock"
+                android:foregroundTint="@color/black"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp"
                 app:layout_constraintStart_toStartOf="@+id/ic2"
-                app:layout_constraintTop_toBottomOf="@+id/ic2"
-                app:srcCompat="@drawable/ic_clock"
-                app:tint="@color/black" />
+                app:layout_constraintTop_toBottomOf="@+id/ic2" />
 
             <TextView
                 android:id="@+id/top_res_time"
@@ -114,8 +125,7 @@
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/ic3"
                 app:layout_constraintStart_toEndOf="@+id/ic3"
-                app:layout_constraintTop_toBottomOf="@+id/ic2"
-                app:layout_constraintVertical_bias="0.857" />
+                app:layout_constraintTop_toTopOf="@+id/ic3" />
 
             <RatingBar
                 android:id="@+id/top_rating"
@@ -123,8 +133,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="@+id/top_res_img"
                 app:layout_constraintTop_toBottomOf="@+id/top_res_img" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

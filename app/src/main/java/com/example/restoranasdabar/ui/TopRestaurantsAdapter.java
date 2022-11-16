@@ -14,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.restoranasdabar.MainActivity;
+import com.example.restoranasdabar.Menu_restaurant;
 import com.example.restoranasdabar.R;
 import com.example.restoranasdabar.TopRestaurantsModel;
 
@@ -48,16 +49,18 @@ public class TopRestaurantsAdapter extends RecyclerView.Adapter<TopRestaurantsAd
         holder.schedule.setText(model.getSchedule());
         holder.number.setText(model.getNumber());
         holder.image.setImageResource(model.getImage());
+        holder.rating.setRating(model.getRating());
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ctx, MainActivity.class);
+                Intent intent = new Intent(ctx, Menu_restaurant.class);
                 intent.putExtra("topRestName", model.getName());
                 intent.putExtra("topRestLoc", model.getLocation());
                 intent.putExtra("topRestTime", model.getSchedule());
                 intent.putExtra("topRestNumb", model.getNumber());
                 intent.putExtra("topRestImg", model.getImage());
+                intent.putExtra("topRestRate", model.getRating());
                 ctx.startActivity(intent);
 
             }
@@ -73,7 +76,8 @@ public class TopRestaurantsAdapter extends RecyclerView.Adapter<TopRestaurantsAd
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView name, location, schedule, number;
-        ImageView image, time, phone, pin;
+        CardView time, phone, pin;
+        ImageView image;
         RatingBar rating;
         CardView card;
 
