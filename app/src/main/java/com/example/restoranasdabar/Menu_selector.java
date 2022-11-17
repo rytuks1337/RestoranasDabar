@@ -1,32 +1,36 @@
 package com.example.restoranasdabar;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewStub;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
-public class Menu_selector extends AppCompatActivity {
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+public class Menu_selector extends BottomSheetDialogFragment {
+
+    ViewStub stub;
+
+    public Menu_selector(){
+
+    }
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_selector);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        CalendarView calendarView=(CalendarView) findViewById(R.id.calendarView1);
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+    @Nullable
 
-            @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month,
-                                            int dayOfMonth) {
-                Toast.makeText(getApplicationContext(), ""+dayOfMonth, Toast.LENGTH_SHORT).show();// TODO Auto-generated method stub
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle saved){
 
-            }
-        });
+        View view = inflater.inflate(R.layout.activity_menu_selector, container, false);
 
+        return view;
     }
-    public void onClose(View view){
-        finish();
-    }
+
+
+
 }

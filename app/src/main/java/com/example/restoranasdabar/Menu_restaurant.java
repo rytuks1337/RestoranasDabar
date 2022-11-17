@@ -52,8 +52,8 @@ public class Menu_restaurant extends AppCompatActivity {
     }
 
     public void openMenuSelector(View view){
-        Intent menu_select = new Intent(this, Menu_selector.class);
-        startActivity(menu_select);
+        Menu_selector bottomSheet = new Menu_selector();
+        bottomSheet.show(getSupportFragmentManager(), "TAG");
     }
     public void onClose(View view){
         finish();
