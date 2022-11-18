@@ -16,8 +16,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class Menu_selector extends BottomSheetDialogFragment {
 
-    ViewStub stub;
-
     public Menu_selector(){
 
     }
