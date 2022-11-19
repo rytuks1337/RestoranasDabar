@@ -1,10 +1,13 @@
 package com.example.restoranasdabar;
 
+import android.graphics.Bitmap;
+
 public class TopRestaurantsModel {
     String name, location, number, schedule;
-    int image, rating;
+    Bitmap image;
+    float rating;
 
-    public TopRestaurantsModel(String name, String location, String number, String schedule, int image, int rating) {
+    public TopRestaurantsModel(String name, String location, String number, String schedule, Bitmap image, float rating) {
         this.name = name;
         this.location = location;
         this.number = number;
@@ -45,15 +48,15 @@ public class TopRestaurantsModel {
         this.schedule = schedule;
     }
 
-    public int getImage() {
+    public Bitmap getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(Bitmap image) {
         this.image = image;
     }
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 

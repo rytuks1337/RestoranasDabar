@@ -48,7 +48,7 @@ public class TopRestaurantsAdapter extends RecyclerView.Adapter<TopRestaurantsAd
         holder.location.setText(model.getLocation());
         holder.schedule.setText(model.getSchedule());
         holder.number.setText(model.getNumber());
-        holder.image.setImageResource(model.getImage());
+        holder.image.setImageBitmap(model.getImage());
         holder.rating.setRating(model.getRating());
 
         holder.card.setOnClickListener(new View.OnClickListener() {

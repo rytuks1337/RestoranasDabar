@@ -19,7 +19,7 @@
                 android:fitsSystemWindows="true"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:contentScrim="@color/primary"
-                app:expandedTitleTextAppearance="@android:color/transparent"
+
                 >
                 <com.denzcoskun.imageslider.ImageSlider
                     android:id="@+id/menu_imageslider"

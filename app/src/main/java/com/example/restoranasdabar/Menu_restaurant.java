@@ -1,5 +1,5 @@
 package com.example.restoranasdabar;
-
+import com.googlecode.flickrjandroid.*;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -55,7 +55,8 @@ public class Menu_restaurant extends AppCompatActivity {
         Menu_selector bottomSheet = new Menu_selector();
         bottomSheet.show(getSupportFragmentManager(), "TAG");
     }
-    public void onClose(View view){
+    public void onClose(View view)
+    {
         finish();
     }
 }
