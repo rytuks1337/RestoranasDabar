@@ -59,8 +59,8 @@ public class TopRestaurantsAdapter extends RecyclerView.Adapter<TopRestaurantsAd
                 intent.putExtra("topRestLoc", model.getLocation());
                 intent.putExtra("topRestTime", model.getSchedule());
                 intent.putExtra("topRestNumb", model.getNumber());
-                intent.putExtra("topRestImg", model.getImage());
                 intent.putExtra("topRestRate", model.getRating());
+                intent.putExtra("urlsInJsonString",model.getUrls());
                 ctx.startActivity(intent);
 
             }

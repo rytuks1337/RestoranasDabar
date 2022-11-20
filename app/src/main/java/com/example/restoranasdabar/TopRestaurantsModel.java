@@ -2,15 +2,19 @@ package com.example.restoranasdabar;
 
 import android.graphics.Bitmap;
 
+import org.json.JSONArray;
+
 public class TopRestaurantsModel {
     String name, location, number, schedule;
     Bitmap image;
+    String urls;//json string
     float rating;
 
-    public TopRestaurantsModel(String name, String location, String number, String schedule, Bitmap image, float rating) {
+    public TopRestaurantsModel(String name, String location, String number, String schedule, Bitmap image, float rating, String urls) {
         this.name = name;
         this.location = location;
         this.number = number;
+        this.urls=urls;
         this.schedule = schedule;
         this.image = image;
         this.rating = rating;
@@ -60,7 +64,15 @@ public class TopRestaurantsModel {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(float rating) {
         this.rating = rating;
+    }
+
+    public String getUrls() {
+        return urls;
+    }
+
+    public void setUrls(String urls) {
+        this.urls = urls;
     }
 }

@@ -5,24 +5,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class Menu_restaurant extends AppCompatActivity {
-    ImageSlider imageSlider;
+    ViewFlipper imageSlider;
     TextView location, time, phone, name;
     RatingBar rating;
+    JSONArray image_urls;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_restaurant);
-        imageSlider = findViewById(R.id.menu_imageslider);
+        imageSlider = findViewById(R.id.menu_viewFlipper);
         name = findViewById(R.id.menu_rest_name);
         phone = findViewById(R.id.textNumb);
         location = findViewById(R.id.textLocation);
@@ -33,15 +42,38 @@ public class Menu_restaurant extends AppCompatActivity {
         String location_position = getIntent().getStringExtra("topRestLoc");
         String schedule_position = getIntent().getStringExtra("topRestTime");
         String phone_position = getIntent().getStringExtra("topRestNumb");
-        int rating_position = getIntent().getIntExtra("topRestRate", 0);
-        int image_position = getIntent().getIntExtra("tophotelsimage",0);
+        Float rating_position = getIntent().getExtras().getFloat("topRestRate", 0F);
+        try {
+            image_urls = new JSONArray(getIntent().getStringExtra("urlsInJsonString"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 
         ArrayList<SlideModel> images = new ArrayList<>();
-        images.add(new SlideModel(R.drawable.res1, null));
-        images.add(new SlideModel(R.drawable.res2, null));
-        images.add(new SlideModel(R.drawable.res3, null));
-        imageSlider.setImageList(images, ScaleTypes.CENTER_CROP);
+        GetDataFromWeb gt = null;
+        for(int i=0;i<image_urls.length();i++){
+
+            try {
+                gt = new GetDataFromWeb(URLDecoder.decode(image_urls.getString(i), StandardCharsets.UTF_8.name()));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Thread th = new Thread(gt);
+            th.start();
+            try {
+                th.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            ImageView newImage= new ImageView(this);
+            newImage.setImageBitmap(gt.getImage());
+            imageSlider.addView(newImage);
+
+        }
+        imageSlider.startFlipping();
 
         name.setText(name_position);
         time.setText(schedule_position);
