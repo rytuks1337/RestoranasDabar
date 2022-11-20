@@ -49,8 +49,6 @@ public class Menu_restaurant extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
-        ArrayList<SlideModel> images = new ArrayList<>();
         GetDataFromWeb gt = null;
         for(int i=0;i<image_urls.length();i++){
 
