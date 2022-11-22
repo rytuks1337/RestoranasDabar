@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
-        public String getAllRestauronts(){
+    public String getAllRestauronts(){
         String result = null;
         FetchData fetchData = new FetchData("http://185.80.130.112/restinfo.php");
         if (fetchData.startFetch()) {
@@ -116,6 +116,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return result;
     }
-    
+
 
 }

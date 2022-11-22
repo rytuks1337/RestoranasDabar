@@ -16,15 +16,13 @@
         android:layout_marginBottom="40dp"
         android:layout_gravity="center_horizontal"/>
 
-    <DatePicker
-        android:id="@+id/date_picker"
+    <CalendarView
+        android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:calendarViewShown="true"
-        android:spinnersShown="false" />
-
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </LinearLayout>
