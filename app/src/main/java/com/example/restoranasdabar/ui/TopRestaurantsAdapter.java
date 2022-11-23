@@ -26,11 +26,17 @@ public class TopRestaurantsAdapter extends RecyclerView.Adapter<TopRestaurantsAd
     Context ctx;
     ArrayList<TopRestaurantsModel> restaurantsArray;
 
+
     public TopRestaurantsAdapter(Context ctx, ArrayList<TopRestaurantsModel> restaurantsArray){
 
         this.ctx = ctx;
         this.restaurantsArray = restaurantsArray;
 
+    }
+
+    public void setFilteredList(ArrayList<TopRestaurantsModel> filteredList){
+        this.restaurantsArray = filteredList;
+        notifyDataSetChanged();
     }
 
     @NonNull

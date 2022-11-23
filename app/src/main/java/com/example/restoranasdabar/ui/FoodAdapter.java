@@ -34,7 +34,9 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     @NonNull
     @Override
     public FoodAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         View resView = LayoutInflater.from(ctx.getApplicationContext()).inflate(R.layout.food_card, null, false);
+
         return new FoodAdapter.ViewHolder(resView);
     }
 

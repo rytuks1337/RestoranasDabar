@@ -1,6 +1,7 @@
 package com.example.restoranasdabar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,10 +26,21 @@ public class foodMenu extends AppCompatActivity {
         food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
         food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
         food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
+        food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
+        food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
+        food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
+        food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
+        food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
+        food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
+        food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
+        food_list.add(new FoodModel("j", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
+
 
         FoodAdapter adapter = new FoodAdapter(this, food_list);
-        LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        menu_list.setLayoutManager(manager);
         menu_list.setAdapter(adapter);
+        LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
+        manager.setAutoMeasureEnabled(false);
+        menu_list.setLayoutManager(manager);
+
     }
 }

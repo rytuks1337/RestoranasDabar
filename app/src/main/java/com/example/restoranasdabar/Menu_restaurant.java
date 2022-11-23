@@ -99,14 +99,18 @@ public class Menu_restaurant extends AppCompatActivity {
 
         head.setCollapsedTitleTextColor(Color.WHITE);
         head.setExpandedTitleColor(Color.WHITE);
-
-
     }
 
     public void openMenuSelector(View view){
         Menu_selector bottomSheet = new Menu_selector();
         bottomSheet.show(getSupportFragmentManager(), "TAG");
     }
+
+    public void onMenuClick(View view){
+        Intent intent = new Intent(this, foodMenu.class);
+        this.startActivity(intent);
+    }
+
     public void onClose(View view)
     {
         finish();

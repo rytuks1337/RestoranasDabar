@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -38,6 +39,7 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -45,11 +47,16 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mNavDrawer;
     RecyclerView top_res_pager;
     ArrayList<TopRestaurantsModel> restaurantlist;
+    SearchView search;
+    TopRestaurantsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        top_res_pager = findViewById(R.id.top_res_pager);
+        search = findViewById(R.id.main_SearchView);
 
 
         restaurantlist = new ArrayList<>();
@@ -75,9 +82,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        top_res_pager = findViewById(R.id.top_res_pager);
 
-        TopRestaurantsAdapter adapter = new TopRestaurantsAdapter(this, restaurantlist);
+
+        adapter = new TopRestaurantsAdapter(this, restaurantlist);
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         top_res_pager.setAdapter(adapter);
         top_res_pager.setLayoutManager(manager);
@@ -95,6 +102,36 @@ public class MainActivity extends AppCompatActivity {
         mNavDrawer.addDrawerListener(toggle);
 
         toggle.syncState();
+
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterList(newText);
+                return false;
+            }
+        });
+    }
+
+    private void filterList(String text) {
+        ArrayList<TopRestaurantsModel> filteredList = new ArrayList<>();
+        for(TopRestaurantsModel item : restaurantlist){
+            if(item.getName().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+
+        if(filteredList.isEmpty()){
+            Toast.makeText(this, "No data found", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            adapter.setFilteredList(filteredList);
+        }
+
     }
 
     @Override
