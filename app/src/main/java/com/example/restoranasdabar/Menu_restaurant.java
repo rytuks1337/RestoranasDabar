@@ -1,11 +1,13 @@
 package com.example.restoranasdabar;
 import com.example.restoranasdabar.ui.FoodAdapter;
+import com.example.restoranasdabar.ui.ImageAdapter;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.googlecode.flickrjandroid.*;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -22,11 +24,13 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Menu_restaurant extends AppCompatActivity {
-    ViewFlipper imageSlider;
+    List<Image> imageList;
+    ViewPager2 pager;
+    ImageAdapter adapter_im;
     TextView location, time, phone, name;
-    RecyclerView menu_list;
     Toolbar toolbar;
     CollapsingToolbarLayout head;
     RatingBar rating;
@@ -39,7 +43,8 @@ public class Menu_restaurant extends AppCompatActivity {
 
 
 
-        imageSlider = findViewById(R.id.menu_viewFlipper);
+        pager = findViewById(R.id.menu_viewFlipper);
+        imageList = new ArrayList<>();
         name = findViewById(R.id.menu_rest_name);
         phone = findViewById(R.id.textNumb);
         location = findViewById(R.id.textLocation);
@@ -80,15 +85,12 @@ public class Menu_restaurant extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            ImageView newImage= new ImageView(this);
-            newImage.setImageBitmap(gt.getImage());
-            imageSlider.addView(newImage);
+            imageList.add(new Image(gt.getImage()));
 
         }
-        imageSlider.setFlipInterval(4000);
-        imageSlider.setInAnimation(this, R.anim.animation_in);
-        imageSlider.setOutAnimation(this, R.anim.animation_out);
-        imageSlider.startFlipping();
+
+        adapter_im = new ImageAdapter(imageList, pager);
+        pager.setAdapter(adapter_im);
 
         name.setText(name_position);
         head.setTitle(name_position);
