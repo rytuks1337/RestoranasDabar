@@ -2,6 +2,7 @@ package com.example.restoranasdabar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,8 +39,7 @@ public class foodMenu extends AppCompatActivity {
 
         FoodAdapter adapter = new FoodAdapter(this, food_list);
         menu_list.setAdapter(adapter);
-        LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
-        manager.setAutoMeasureEnabled(false);
+        GridLayoutManager manager = new GridLayoutManager(this, 1);
         menu_list.setLayoutManager(manager);
 
     }

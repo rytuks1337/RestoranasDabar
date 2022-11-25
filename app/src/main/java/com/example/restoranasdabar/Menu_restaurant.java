@@ -57,7 +57,7 @@ public class Menu_restaurant extends AppCompatActivity {
         setSupportActionBar(toolbar);
         head = findViewById(R.id.menu_CollapsingToolbarLayout);
 
-        String name_position = getIntent().getStringExtra("topRestName");
+            String name_position = getIntent().getStringExtra("topRestName");
         String location_position = getIntent().getStringExtra("topRestLoc");
         String schedule_position = getIntent().getStringExtra("topRestTime");
         String phone_position = getIntent().getStringExtra("topRestNumb");

@@ -23,8 +23,8 @@ import java.util.ArrayList;
 
 public class TopRestaurantsAdapter extends RecyclerView.Adapter<TopRestaurantsAdapter.ViewHolder> {
 
-    Context ctx;
-    ArrayList<TopRestaurantsModel> restaurantsArray;
+        Context ctx;
+        ArrayList<TopRestaurantsModel> restaurantsArray;
 
 
     public TopRestaurantsAdapter(Context ctx, ArrayList<TopRestaurantsModel> restaurantsArray){
