@@ -1,14 +1,7 @@
 package com.example.restoranasdabar;
 
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.icu.lang.UCharacter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -19,27 +12,17 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.restoranasdabar.ui.TopRestaurantsAdapter;
-import com.squareup.picasso.Picasso;
 import com.vishnusivadas.advanced_httpurlconnection.FetchData;
-import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -62,15 +45,15 @@ public class MainActivity extends AppCompatActivity {
         restaurantlist = new ArrayList<>();
         JSONArray jsonArray;
         try {
-            jsonArray = new JSONArray(getAllRestauronts());
-
+            jsonArray = new JSONArray(getAllRestaurants());
+            GetDataFromWeb gt = new GetDataFromWeb();
             for(int i=0;i<jsonArray.length();i++){
-                GetDataFromWeb gt = new GetDataFromWeb(URLDecoder.decode(jsonArray.getJSONObject(i).getJSONArray("urls").getString(0), StandardCharsets.UTF_8.name()));
+                gt.setUrl(URLDecoder.decode(jsonArray.getJSONObject(i).getJSONArray("urls").getString(0), StandardCharsets.UTF_8.name()));
                 Thread th = new Thread(gt);
                 th.start();
                 th.join();
 
-                restaurantlist.add(new TopRestaurantsModel(jsonArray.getJSONObject(i).getString("Name"), jsonArray.getJSONObject(i).getString("Location"), jsonArray.getJSONObject(i).getString("Telephone"), jsonArray.getJSONObject(i).getString("Hours"), gt.getImage(), Float.parseFloat(jsonArray.getJSONObject(i).getString("Rating")),jsonArray.getJSONObject(i).getJSONArray("urls").toString()));
+                restaurantlist.add(new TopRestaurantsModel(jsonArray.getJSONObject(i).getString("Name"), jsonArray.getJSONObject(i).getString("Location"), jsonArray.getJSONObject(i).getString("Telephone"), jsonArray.getJSONObject(i).getString("Hours"), gt.getImage(), Float.parseFloat(jsonArray.getJSONObject(i).getString("Rating")),jsonArray.getJSONObject(i).getJSONArray("urls").toString(),jsonArray.getJSONObject(i).getJSONArray("Menu").toString()));
 
             }
         } catch (JSONException e) {
@@ -143,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
-    public String getAllRestauronts(){
+    public String getAllRestaurants(){
         String result = null;
         FetchData fetchData = new FetchData("http://185.80.130.112/restinfo.php");
         if (fetchData.startFetch()) {

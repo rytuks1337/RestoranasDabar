@@ -7,10 +7,10 @@ import org.json.JSONArray;
 public class TopRestaurantsModel {
     String name, location, number, schedule;
     Bitmap image;
-    String urls;//json string
+    String urls, jsonMenu;//json string
     float rating;
 
-    public TopRestaurantsModel(String name, String location, String number, String schedule, Bitmap image, float rating, String urls) {
+    public TopRestaurantsModel(String name, String location, String number, String schedule, Bitmap image, float rating, String urls, String jsonMenu) {
         this.name = name;
         this.location = location;
         this.number = number;
@@ -18,6 +18,7 @@ public class TopRestaurantsModel {
         this.schedule = schedule;
         this.image = image;
         this.rating = rating;
+        this.jsonMenu=jsonMenu;
     }
 
     public String getName() {
@@ -26,6 +27,14 @@ public class TopRestaurantsModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getjsonMenu() {
+        return jsonMenu;
+    }
+
+    public void setjsonMenu(String jsonMenu) {
+        this.jsonMenu = jsonMenu;
     }
 
     public String getLocation() {

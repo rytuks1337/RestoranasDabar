@@ -18,6 +18,8 @@ public class GetDataFromWeb implements Runnable{
     GetDataFromWeb(String url){
         this.src=url;
     }
+    GetDataFromWeb(){}
+    public void setUrl(String url){this.src=url;}
 
     public void run() {
         try {

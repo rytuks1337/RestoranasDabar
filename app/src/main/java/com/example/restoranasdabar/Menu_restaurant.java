@@ -41,8 +41,6 @@ public class Menu_restaurant extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_restaurant);
 
-
-
         pager = findViewById(R.id.menu_viewFlipper);
         imageList = new ArrayList<>();
         name = findViewById(R.id.menu_rest_name);
@@ -56,23 +54,22 @@ public class Menu_restaurant extends AppCompatActivity {
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24);
         setSupportActionBar(toolbar);
         head = findViewById(R.id.menu_CollapsingToolbarLayout);
-
-            String name_position = getIntent().getStringExtra("topRestName");
+        String name_position = getIntent().getStringExtra("topRestName");
         String location_position = getIntent().getStringExtra("topRestLoc");
         String schedule_position = getIntent().getStringExtra("topRestTime");
         String phone_position = getIntent().getStringExtra("topRestNumb");
-        Float rating_position = getIntent().getExtras().getFloat("topRestRate", 0F);
+        float rating_position = getIntent().getExtras().getFloat("topRestRate", 0F);
         try {
             image_urls = new JSONArray(getIntent().getStringExtra("urlsInJsonString"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        GetDataFromWeb gt = null;
+        GetDataFromWeb gt = new GetDataFromWeb();
         for(int i=0;i<image_urls.length();i++){
 
             try {
-                gt = new GetDataFromWeb(URLDecoder.decode(image_urls.getString(i), StandardCharsets.UTF_8.name()));
+                gt.setUrl(URLDecoder.decode(image_urls.getString(i), StandardCharsets.UTF_8.name()));
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             } catch (JSONException e) {
@@ -110,6 +107,7 @@ public class Menu_restaurant extends AppCompatActivity {
 
     public void onMenuClick(View view){
         Intent intent = new Intent(this, foodMenu.class);
+        intent.putExtra("Menu_info",getIntent().getStringExtra("menu_json"));
         this.startActivity(intent);
     }
 

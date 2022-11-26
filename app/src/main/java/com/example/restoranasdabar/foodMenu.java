@@ -10,6 +10,9 @@ import android.os.Bundle;
 
 import com.example.restoranasdabar.ui.FoodAdapter;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.ArrayList;
 
 public class foodMenu extends AppCompatActivity {
@@ -23,18 +26,23 @@ public class foodMenu extends AppCompatActivity {
         menu_list = findViewById(R.id.menu_food_list);
 
         food_list = new ArrayList<>();
-        food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
-        food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
-        food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
-        food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
-        food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
-        food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
-        food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
-        food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
-        food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
-        food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
-        food_list.add(new FoodModel("Pizza", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
-        food_list.add(new FoodModel("j", "Cheese, tomato sauce, peperonni", "Main Foods", (float) 5.80));
+        JSONArray jsonmenu = null;
+        try {
+            jsonmenu= new JSONArray(getIntent().getStringExtra("Menu_info"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if(jsonmenu!=null) {
+            for (int i = 0; i < jsonmenu.length(); i++) {
+
+                try {
+                    food_list.add(new FoodModel(jsonmenu.getJSONObject(i).getString("name"), jsonmenu.getJSONObject(i).getString("description"), "Main Foods", (float) jsonmenu.getJSONObject(i).getDouble("cost")));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
 
 
         FoodAdapter adapter = new FoodAdapter(this, food_list);

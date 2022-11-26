@@ -1,8 +1,8 @@
 package com.example.restoranasdabar;
 
 public class FoodModel {
-    String Name, Description, Category;
-    float price;
+    private String Name, Description, Category;
+    private float price;
 
     public FoodModel(String name, String description, String category, float price) {
         Name = name;
