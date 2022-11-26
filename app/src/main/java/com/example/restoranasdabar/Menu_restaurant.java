@@ -12,6 +12,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -30,7 +31,7 @@ public class Menu_restaurant extends AppCompatActivity {
     List<Image> imageList;
     ViewPager2 pager;
     ImageAdapter adapter_im;
-    TextView location, time, phone, name;
+    TextView location, time, phone, name, about, price_avg;
     Toolbar toolbar;
     CollapsingToolbarLayout head;
     RatingBar rating;
@@ -49,6 +50,8 @@ public class Menu_restaurant extends AppCompatActivity {
         toolbar = findViewById(R.id.menu_toolbar);
         time = findViewById(R.id.textSchedule);
         rating = findViewById(R.id.menu_rating_rating_bar1);
+        about = findViewById(R.id.text_about);
+        price_avg = findViewById(R.id.menu_avg);
 
 
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24);
@@ -58,6 +61,7 @@ public class Menu_restaurant extends AppCompatActivity {
         String location_position = getIntent().getStringExtra("topRestLoc");
         String schedule_position = getIntent().getStringExtra("topRestTime");
         String phone_position = getIntent().getStringExtra("topRestNumb");
+        String about_position = getIntent().getStringExtra("about");
         float rating_position = getIntent().getExtras().getFloat("topRestRate", 0F);
         try {
             image_urls = new JSONArray(getIntent().getStringExtra("urlsInJsonString"));
@@ -95,9 +99,10 @@ public class Menu_restaurant extends AppCompatActivity {
         location.setText(location_position);
         phone.setText(phone_position);
         rating.setRating(rating_position);
-
+        about.setText(about_position);
         head.setCollapsedTitleTextColor(Color.WHITE);
         head.setExpandedTitleColor(Color.WHITE);
+
     }
 
     public void openMenuSelector(View view){
@@ -111,9 +116,5 @@ public class Menu_restaurant extends AppCompatActivity {
         this.startActivity(intent);
     }
 
-    public void onClose(View view)
-    {
-        finish();
-    }
 
 }

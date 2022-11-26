@@ -1,12 +1,11 @@
 package com.example.restoranasdabar;
 
 public class FoodModel {
-    private String Name, Description, Category;
+    private String Name, Description;
     private float price;
 
-    public FoodModel(String name, String description, String category, float price) {
+    public FoodModel(String name, String description, float price) {
         Name = name;
-        Category = category;
         Description = description;
         this.price = price;
     }
@@ -18,15 +17,6 @@ public class FoodModel {
     public void setName(String name) {
         Name = name;
     }
-
-    public String getCategory() {
-        return Category;
-    }
-
-    public void setCategory(String category) {
-        Category = category;
-    }
-
 
     public String getDescription() {
         return Description;

@@ -68,6 +68,7 @@ public class TopRestaurantsAdapter extends RecyclerView.Adapter<TopRestaurantsAd
                 intent.putExtra("topRestRate", model.getRating());
                 intent.putExtra("urlsInJsonString",model.getUrls());
                 intent.putExtra("menu_json", model.getjsonMenu());
+                intent.putExtra("about", model.getAbout());
                 ctx.startActivity(intent);
 
             }

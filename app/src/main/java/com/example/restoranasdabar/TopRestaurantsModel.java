@@ -5,15 +5,17 @@ import android.graphics.Bitmap;
 import org.json.JSONArray;
 
 public class TopRestaurantsModel {
-    String name, location, number, schedule;
+    String name, location, number, schedule, about;
     Bitmap image;
-    String urls, jsonMenu;//json string
+    String urls;
+    String jsonMenu;//json string
     float rating;
 
-    public TopRestaurantsModel(String name, String location, String number, String schedule, Bitmap image, float rating, String urls, String jsonMenu) {
+    public TopRestaurantsModel(String name, String location, String number, String schedule, Bitmap image, float rating, String about, String urls, String jsonMenu) {
         this.name = name;
         this.location = location;
         this.number = number;
+        this.about = about;
         this.urls=urls;
         this.schedule = schedule;
         this.image = image;
@@ -43,6 +45,14 @@ public class TopRestaurantsModel {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
     }
 
     public String getNumber() {

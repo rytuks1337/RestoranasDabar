@@ -56,8 +56,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView name, description, price, category;
-        ImageView currency;
+        TextView name, description, price;
         CardView card;
 
 

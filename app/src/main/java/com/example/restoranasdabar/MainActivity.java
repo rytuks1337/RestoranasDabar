@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 th.start();
                 th.join();
 
-                restaurantlist.add(new TopRestaurantsModel(jsonArray.getJSONObject(i).getString("Name"), jsonArray.getJSONObject(i).getString("Location"), jsonArray.getJSONObject(i).getString("Telephone"), jsonArray.getJSONObject(i).getString("Hours"), gt.getImage(), Float.parseFloat(jsonArray.getJSONObject(i).getString("Rating")),jsonArray.getJSONObject(i).getJSONArray("urls").toString(),jsonArray.getJSONObject(i).getJSONArray("Menu").toString()));
+                restaurantlist.add(new TopRestaurantsModel(jsonArray.getJSONObject(i).getString("Name"), jsonArray.getJSONObject(i).getString("Location"), jsonArray.getJSONObject(i).getString("Telephone"), jsonArray.getJSONObject(i).getString("Hours"), gt.getImage(), Float.parseFloat(jsonArray.getJSONObject(i).getString("Rating")), jsonArray.getJSONObject(i).getString("About"),jsonArray.getJSONObject(i).getJSONArray("urls").toString(),jsonArray.getJSONObject(i).getJSONArray("Menu").toString()));
 
             }
         } catch (JSONException e) {
