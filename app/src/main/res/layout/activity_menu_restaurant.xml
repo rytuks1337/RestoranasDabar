@@ -24,6 +24,17 @@
                 app:contentScrim="@color/primary"
 
                 >
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/arrow"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:visibility="invisible"
+                    android:backgroundTint="@android:color/transparent"
+                    android:layout_marginTop="150dp"
+                    android:layout_gravity="end"
+                    android:foreground="@drawable/ic_baseline_arrow_forward_ios_24_white"/>
+
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/menu_viewFlipper"
                     android:layout_width="match_parent"

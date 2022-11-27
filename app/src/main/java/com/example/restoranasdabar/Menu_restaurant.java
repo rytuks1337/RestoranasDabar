@@ -5,6 +5,7 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.googlecode.flickrjandroid.*;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
@@ -34,8 +35,9 @@ public class Menu_restaurant extends AppCompatActivity {
     TextView location, time, phone, name, about, price_avg;
     Toolbar toolbar;
     CollapsingToolbarLayout head;
+    Bundle bundle;
+    CardView arrow;
     RatingBar rating;
-    ArrayList<FoodModel> food_list;
     JSONArray image_urls;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,17 +54,23 @@ public class Menu_restaurant extends AppCompatActivity {
         rating = findViewById(R.id.menu_rating_rating_bar1);
         about = findViewById(R.id.text_about);
         price_avg = findViewById(R.id.menu_avg);
-
+        arrow = findViewById(R.id.arrow);
 
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24);
         setSupportActionBar(toolbar);
         head = findViewById(R.id.menu_CollapsingToolbarLayout);
+
         String name_position = getIntent().getStringExtra("topRestName");
         String location_position = getIntent().getStringExtra("topRestLoc");
         String schedule_position = getIntent().getStringExtra("topRestTime");
         String phone_position = getIntent().getStringExtra("topRestNumb");
         String about_position = getIntent().getStringExtra("about");
+
+         bundle = new Bundle();
+        bundle.putString("time", schedule_position);
+
         float rating_position = getIntent().getExtras().getFloat("topRestRate", 0F);
+
         try {
             image_urls = new JSONArray(getIntent().getStringExtra("urlsInJsonString"));
         } catch (JSONException e) {
@@ -89,6 +97,9 @@ public class Menu_restaurant extends AppCompatActivity {
             imageList.add(new Image(gt.getImage()));
 
         }
+        if(imageList.size() > 1){
+            arrow.setVisibility(View.VISIBLE);
+        }
 
         adapter_im = new ImageAdapter(imageList, pager);
         pager.setAdapter(adapter_im);
@@ -107,6 +118,7 @@ public class Menu_restaurant extends AppCompatActivity {
 
     public void openMenuSelector(View view){
         Menu_selector bottomSheet = new Menu_selector();
+        bottomSheet.setArguments(bundle);
         bottomSheet.show(getSupportFragmentManager(), "TAG");
     }
 
