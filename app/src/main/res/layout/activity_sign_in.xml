@@ -12,35 +12,34 @@
 
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_centerInParent="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center">
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/edtEMailIn"
-            android:hint="E-Mail"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
-            android:textSize="30sp"
+            android:hint="E-Mail"
             android:inputType="textEmailAddress"
-            />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="30sp" />
+
         <EditText
             android:id="@+id/edtPsw"
-            android:hint="Password"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
-            android:textSize="30sp"
+            android:layout_height="wrap_content"
+            android:hint="Password"
             android:inputType="textPassword"
-            />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/btnSignIn"
@@ -49,13 +48,12 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="8dp"
-            android:text="Sign In"
             android:background="@color/btnSignActive"
-            android:textColor="@color/white"
-            />
+            android:text="Sign In"
+            android:textColor="@color/white" />
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -70,21 +68,24 @@
             android:id="@+id/tvSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
             android:text="Don't have an account?"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/btnSignUp"
+            app:layout_constraintEnd_toStartOf="@+id/btnSignUp" />
 
         <Button
             android:id="@+id/btnSignUp"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="9dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:background="@color/btnSignUp"
             android:text="Sign Up"
             android:textColor="@color/white"
-            app:cornerRadius="10dp" />
-    </LinearLayout>
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

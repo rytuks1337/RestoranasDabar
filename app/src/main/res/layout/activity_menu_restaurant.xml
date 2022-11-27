@@ -20,6 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:adjustViewBounds="true"
+                android:fitsSystemWindows="true"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:contentScrim="@color/primary"
 
@@ -29,6 +30,7 @@
                     android:id="@+id/arrow"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+
                     android:visibility="invisible"
                     android:backgroundTint="@android:color/transparent"
                     android:layout_marginTop="150dp"
@@ -39,10 +41,11 @@
                     android:id="@+id/menu_viewFlipper"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="fitXY"
                     android:fitsSystemWindows="true"
                     app:layout_collapseMode="parallax"
-                    android:measureAllChildren="false"
+                    android:scaleType="centerInside"
+                    android:adjustViewBounds="true"
+                    android:measureAllChildren="true"
                     />
 
 
