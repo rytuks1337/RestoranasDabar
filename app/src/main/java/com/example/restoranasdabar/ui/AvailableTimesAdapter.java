@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.restoranasdabar.FoodModel;
 import com.example.restoranasdabar.MainActivity;
+import com.example.restoranasdabar.Map;
 import com.example.restoranasdabar.Menu_restaurant;
+import com.example.restoranasdabar.Menu_selector;
 import com.example.restoranasdabar.R;
 import com.example.restoranasdabar.TimeTable;
 import com.example.restoranasdabar.TopRestaurantsModel;
@@ -43,7 +46,19 @@ public class AvailableTimesAdapter extends RecyclerView.Adapter<AvailableTimesAd
 
     @Override
     public void onBindViewHolder(@NonNull AvailableTimesAdapter.ViewHolder holder, int position) {
-        holder.name.setText(timeList.get(position).getTime());
+        TimeTable model = timeList.get(position);
+        holder.name.setText(model.getTime());
+
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String data = Menu_selector.getDate();
+                if(data != null && model.getTime() != null) {
+                    Menu_selector.makeVisable();
+                    Menu_selector.setData(model.getTime());
+                }
+            }
+        });
     }
 
     @Override

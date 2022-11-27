@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
 }
 
+
 android {
     compileSdk 32
 
@@ -29,7 +30,6 @@ android {
         viewBinding true
     }
 }
-
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.5.1'
@@ -54,5 +54,6 @@ dependencies {
     implementation "androidx.navigation:navigation-ui:2.5.3"
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
 }

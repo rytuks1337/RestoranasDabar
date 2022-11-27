@@ -11,8 +11,12 @@
         android:layout_width="80dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="20dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:checkable="true"
         android:backgroundTint="@color/primary"
-        android:layout_height="40dp" >
+        android:layout_height="40dp"
+        android:focusable="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,16 +31,21 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Menu_selector extends BottomSheetDialogFragment {
 
     int startTime, endTime;
+    Context ctx;
 
+    static Calendar calendar = Calendar.getInstance();
     ArrayList<TimeTable> timeList;
     AvailableTimesAdapter adapter;
+    static Button book;
     RecyclerView buttonlist;
-
+    static String data = String.valueOf(calendar.get(Calendar.YEAR)) + "-" + String.valueOf(calendar.get(Calendar.MONTH)) + "-" + String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+    static String selectedTime;
     public Menu_selector(){
 
     }
@@ -51,6 +57,7 @@ public class Menu_selector extends BottomSheetDialogFragment {
         CalendarView date = (CalendarView) view.findViewById(R.id.calendarView);
 
         buttonlist = (RecyclerView) view.findViewById(R.id.buttons);
+        book = view.findViewById(R.id.button2);
 
         timeList= new ArrayList<TimeTable>();
         String myValue = this.getArguments().getString("time");
@@ -70,9 +77,21 @@ public class Menu_selector extends BottomSheetDialogFragment {
         date.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
-
+                data = String.valueOf(year) + "-" + String.valueOf(month) + "-" + String.valueOf(day);
             }
         });
+        book.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ctx = getContext();
+                Intent intent = new Intent(ctx, Map.class);
+                intent.putExtra("Time", selectedTime);
+                intent.putExtra("Date", data);
+
+                ctx.startActivity(intent);
+            }
+        });
+
         return view;
     }
 
@@ -86,6 +105,17 @@ public class Menu_selector extends BottomSheetDialogFragment {
             timeList.add(new TimeTable(String.valueOf(i/60) + ":" + j));
         }
 
+    }
+
+    public static String getDate() {
+        return data;
+    }
+
+    public static void setData(String time){
+        selectedTime = time;
+    }
+    public static void makeVisable(){
+        book.setVisibility(View.VISIBLE);
     }
 
 
