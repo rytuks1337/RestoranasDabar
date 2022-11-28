@@ -66,8 +66,9 @@ public class Menu_restaurant extends AppCompatActivity {
         String phone_position = getIntent().getStringExtra("topRestNumb");
         String about_position = getIntent().getStringExtra("about");
 
-         bundle = new Bundle();
+        bundle = new Bundle();
         bundle.putString("time", schedule_position);
+        bundle.putString("table_json_string",getIntent().getStringExtra("table_json_string"));
 
         float rating_position = getIntent().getExtras().getFloat("topRestRate", 0F);
 

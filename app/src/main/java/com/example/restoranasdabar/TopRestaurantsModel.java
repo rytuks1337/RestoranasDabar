@@ -9,9 +9,10 @@ public class TopRestaurantsModel {
     Bitmap image;
     String urls;
     String jsonMenu;//json string
+    String jsonTable;
     float rating;
 
-    public TopRestaurantsModel(String name, String location, String number, String schedule, Bitmap image, float rating, String about, String urls, String jsonMenu) {
+    public TopRestaurantsModel(String name, String location, String number, String schedule, Bitmap image, float rating, String about, String urls, String jsonMenu, String jsonTable) {
         this.name = name;
         this.location = location;
         this.number = number;
@@ -19,6 +20,7 @@ public class TopRestaurantsModel {
         this.urls=urls;
         this.schedule = schedule;
         this.image = image;
+        this.jsonTable=jsonTable;
         this.rating = rating;
         this.jsonMenu=jsonMenu;
     }
@@ -93,5 +95,13 @@ public class TopRestaurantsModel {
 
     public void setUrls(String urls) {
         this.urls = urls;
+    }
+
+    public String getJsonTable() {
+        return jsonTable;
+    }
+
+    public void setJsonTable(String jsonTable) {
+        this.jsonTable = jsonTable;
     }
 }

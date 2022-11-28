@@ -28,6 +28,9 @@ import com.example.restoranasdabar.ui.AvailableTimesAdapter;
 import com.example.restoranasdabar.ui.TopRestaurantsAdapter;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -61,6 +64,10 @@ public class Menu_selector extends BottomSheetDialogFragment {
 
         timeList= new ArrayList<TimeTable>();
         String myValue = this.getArguments().getString("time");
+
+        String arrayOfTablesString = this.getArguments().getString("table_json_string");
+
+
         int[] time = TimeParser.timeInMin(myValue);
         startTime = time[0]*60 + time[1];
         endTime = (time[2]*60 + time[3])-60;
@@ -85,6 +92,7 @@ public class Menu_selector extends BottomSheetDialogFragment {
             public void onClick(View view) {
                 ctx = getContext();
                 Intent intent = new Intent(ctx, Map.class);
+                intent.putExtra("table_json_string", arrayOfTablesString);
                 intent.putExtra("Time", selectedTime);
                 intent.putExtra("Date", data);
 

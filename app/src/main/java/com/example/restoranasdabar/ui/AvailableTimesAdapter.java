@@ -56,6 +56,7 @@ public class AvailableTimesAdapter extends RecyclerView.Adapter<AvailableTimesAd
                 if(data != null && model.getTime() != null) {
                     Menu_selector.makeVisable();
                     Menu_selector.setData(model.getTime());
+
                 }
             }
         });
