@@ -17,6 +17,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Complete_registration"
+            android:exported="true"
+            />
+
+        <activity
             android:name=".Map"
             android:exported="true"
             android:parentActivityName=".Menu_restaurant">
@@ -27,7 +32,7 @@
         <activity
             android:name=".foodMenu"
             android:exported="true"
-            android:parentActivityName=".Menu_restaurant"></activity>
+            android:parentActivityName=".Menu_restaurant" />
         <activity
             android:name=".Menu_selector"
             android:exported="true"

@@ -27,6 +27,7 @@ public class foodMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_menu);
 
+
         menu_list = findViewById(R.id.menu_food_list);
 
         food_list = new ArrayList<>();

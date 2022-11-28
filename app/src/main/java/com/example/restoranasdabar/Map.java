@@ -6,9 +6,6 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.ortiz.touchview.TouchImageView;
-import com.otaliastudios.zoom.ZoomLayout;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 

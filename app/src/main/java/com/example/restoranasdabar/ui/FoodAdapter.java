@@ -18,6 +18,7 @@ import com.example.restoranasdabar.Menu_restaurant;
 import com.example.restoranasdabar.R;
 import com.example.restoranasdabar.TopRestaurantsModel;
 import com.example.restoranasdabar.foodMenu;
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
 
@@ -47,6 +48,19 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         holder.name.setText(model.getName());
         holder.description.setText(model.getDescription());
         holder.price.setText(String.valueOf(model.getPrice()));
+
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!holder.card.isChecked()){
+                    holder.card.setChecked(true);
+                }
+                else{
+                    holder.card.setChecked(false);
+                }
+
+            }
+        });
     }
 
     @Override
@@ -57,7 +71,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView name, description, price;
-        CardView card;
+        MaterialCardView card;
 
 
         public ViewHolder(@NonNull View itemView){
@@ -70,4 +84,5 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
         }
     }
+
 }

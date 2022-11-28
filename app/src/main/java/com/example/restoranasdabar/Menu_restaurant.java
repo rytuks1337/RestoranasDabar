@@ -53,7 +53,6 @@ public class Menu_restaurant extends AppCompatActivity {
         time = findViewById(R.id.textSchedule);
         rating = findViewById(R.id.menu_rating_rating_bar1);
         about = findViewById(R.id.text_about);
-        price_avg = findViewById(R.id.menu_avg);
         arrow = findViewById(R.id.arrow);
 
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24);

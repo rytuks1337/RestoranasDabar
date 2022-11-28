@@ -2,40 +2,28 @@ package com.example.restoranasdabar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewStub;
 import android.widget.Button;
 import android.widget.CalendarView;
-import android.widget.DatePicker;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
-import android.widget.Toast;
 
 import com.example.restoranasdabar.ui.AvailableTimesAdapter;
-import com.example.restoranasdabar.ui.TopRestaurantsAdapter;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 public class Menu_selector extends BottomSheetDialogFragment {
 
@@ -49,12 +37,13 @@ public class Menu_selector extends BottomSheetDialogFragment {
     RecyclerView buttonlist;
     static String data = String.valueOf(calendar.get(Calendar.YEAR)) + "-" + String.valueOf(calendar.get(Calendar.MONTH)) + "-" + String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
     static String selectedTime;
+    BottomSheetDialogFragment dialog;
+    BottomSheetBehavior<View> behavior;
     public Menu_selector(){
 
     }
     @Override
     @Nullable
-
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle saved){
         View view = inflater.inflate(R.layout.activity_menu_selector, container, false);
         CalendarView date = (CalendarView) view.findViewById(R.id.calendarView);
@@ -102,7 +91,13 @@ public class Menu_selector extends BottomSheetDialogFragment {
 
         return view;
     }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle saved){
+        super.onViewCreated(view, saved);
 
+        behavior = BottomSheetBehavior.from((View) view.getParent());
+        behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+    }
     private void createBtns() {
         for(int i = startTime; i < endTime; i+=15)
         {
@@ -125,6 +120,8 @@ public class Menu_selector extends BottomSheetDialogFragment {
     public static void makeVisable(){
         book.setVisibility(View.VISIBLE);
     }
+
+
 
 
 }

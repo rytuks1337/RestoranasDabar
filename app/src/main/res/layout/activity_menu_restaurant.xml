@@ -104,15 +104,6 @@
                                 android:textSize="40sp"
                                 android:textStyle="bold" />
 
-                            <TextView
-                                android:id="@+id/menu_avg"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="10dp"
-                                android:drawableLeft="@drawable/ic_baseline_attach_money_24"
-                                android:text="AVG_PRICE"
-
-                                />
                         </LinearLayout>
 
                         <TextView
@@ -216,7 +207,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="8dp"
-                        android:onClick="onMenuClick"
                         android:layout_weight="1"
                         android:paddingRight="12dp"
                         android:paddingLeft="12dp"
@@ -231,8 +221,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-
-                        android:onClick="onMenuClick"
                         android:layout_weight="1"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
