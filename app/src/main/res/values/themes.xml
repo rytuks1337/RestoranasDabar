@@ -10,7 +10,7 @@
         <item name="colorSecondaryVariant">#75E07401</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
         <!-- Customize your theme here. -->
     </style>
 
@@ -21,5 +21,14 @@
 
     <style name="Theme.RestoranasDabar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.RestoranasDabar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.RestoranasDabar.PopupOverlay" parent="Theme.AppCompat" />
+
+    <style name="CalenderViewCustom" parent="Theme.AppCompat.DayNight">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorAccent">#E92F1E</item>
+        <item name="android:textColorPrimary">@color/black</item>
+    </style>
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
 </resources>

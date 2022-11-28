@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView top_res_pager;
     ArrayList<TopRestaurantsModel> restaurantlist;
     SearchView search;
+    Toolbar main;
     TopRestaurantsAdapter adapter;
 
     @Override
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
         top_res_pager = findViewById(R.id.top_res_pager);
         search = findViewById(R.id.main_SearchView);
+        main = findViewById(R.id.main_Toolbar);
+        //setSupportActionBar(main);
 
 
         restaurantlist = new ArrayList<>();

@@ -19,6 +19,8 @@
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
+        android:theme="@style/CalenderViewCustom"
+        android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
