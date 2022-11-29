@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         top_res_pager = findViewById(R.id.top_res_pager);
         search = findViewById(R.id.main_SearchView);
         main = findViewById(R.id.main_Toolbar);
-        //setSupportActionBar(main);
 
 
         restaurantlist = new ArrayList<>();

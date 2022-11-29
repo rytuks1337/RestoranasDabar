@@ -55,6 +55,7 @@ public class Menu_selector extends BottomSheetDialogFragment {
         String myValue = this.getArguments().getString("time");
 
         String arrayOfTablesString = this.getArguments().getString("table_json_string");
+        String arrayOfFood = this.getArguments().getString("Menu_info");
 
 
         int[] time = TimeParser.timeInMin(myValue);
@@ -80,10 +81,11 @@ public class Menu_selector extends BottomSheetDialogFragment {
             @Override
             public void onClick(View view) {
                 ctx = getContext();
-                Intent intent = new Intent(ctx, Map.class);
+                Intent intent = new Intent(ctx, OrderFood.class);
                 intent.putExtra("table_json_string", arrayOfTablesString);
                 intent.putExtra("Time", selectedTime);
                 intent.putExtra("Date", data);
+                intent.putExtra("Menu_info", arrayOfFood);
 
                 ctx.startActivity(intent);
             }

@@ -18,7 +18,7 @@
 
 
     <TextView
-        android:id="@+id/resevation_date"
+        android:id="@+id/reservation_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -54,22 +54,11 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"/>
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
 
             <ListView
                 android:id="@+id/foodOrder"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+                android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/button"

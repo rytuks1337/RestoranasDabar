@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <androidx.core.widget.NestedScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        tools:context=".foodMenu">
+        tools:context=".OrderFood">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/menu_food_list"
@@ -14,3 +18,15 @@
             android:layout_height="wrap_content"
             />
     </androidx.core.widget.NestedScrollView>
+    <Button
+        android:id="@+id/orderbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="invisible"
+        android:text="Make an order"
+        android:elevation="6dp"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/btnSignUp"
+        />
+</RelativeLayout>

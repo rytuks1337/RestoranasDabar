@@ -1,14 +1,10 @@
 package com.example.restoranasdabar;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.restoranasdabar.ui.FoodAdapter;
 
@@ -20,8 +16,6 @@ import java.util.ArrayList;
 public class foodMenu extends AppCompatActivity {
     RecyclerView menu_list;
     ArrayList<FoodModel> food_list;
-    float priceSum = 0;
-    float priceAvg = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +23,7 @@ public class foodMenu extends AppCompatActivity {
 
 
         menu_list = findViewById(R.id.menu_food_list);
+
 
         food_list = new ArrayList<>();
         JSONArray jsonmenu = null;
@@ -41,15 +36,13 @@ public class foodMenu extends AppCompatActivity {
             for (int i = 0; i < jsonmenu.length(); i++) {
 
                 try {
-                    food_list.add(new FoodModel(jsonmenu.getJSONObject(i).getString("name"), jsonmenu.getJSONObject(i).getString("description"), (float) jsonmenu.getJSONObject(i).getDouble("cost")));
-                    priceSum += (float) jsonmenu.getJSONObject(i).getDouble("cost");
+                    food_list.add(new FoodModel(jsonmenu.getJSONObject(i).getString("name"), jsonmenu.getJSONObject(i).getString("description"), (float) jsonmenu.getJSONObject(i).getDouble("cost"), false));
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
 
-            priceAvg = priceSum/ jsonmenu.length();
         }
 
         FoodAdapter adapter = new FoodAdapter(this, food_list);

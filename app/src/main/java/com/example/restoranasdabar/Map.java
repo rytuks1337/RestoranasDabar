@@ -1,6 +1,10 @@
 package com.example.restoranasdabar;
 
+
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +33,14 @@ public class Map extends AppCompatActivity {
                 button.setWidth(Integer.parseInt(tableArr.getJSONObject(i).getString("Width")));
                 button.setHeight(Integer.parseInt(tableArr.getJSONObject(i).getString("Height")));
                 mapview.addView(button);
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(getApplicationContext(), OrderFood.class);
+                        getApplicationContext().startActivity(intent);
+                    }
+                });
             }
         } catch (JSONException e) {
             e.printStackTrace();

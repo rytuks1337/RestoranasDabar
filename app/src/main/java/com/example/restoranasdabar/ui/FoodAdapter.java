@@ -49,18 +49,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         holder.description.setText(model.getDescription());
         holder.price.setText(String.valueOf(model.getPrice()));
 
-        holder.card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!holder.card.isChecked()){
-                    holder.card.setChecked(true);
-                }
-                else{
-                    holder.card.setChecked(false);
-                }
 
-            }
-        });
     }
 
     @Override
