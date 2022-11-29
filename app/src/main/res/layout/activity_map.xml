@@ -24,7 +24,7 @@
     app:maxZoom="2.5"
     app:maxZoomType="zoom"
     app:animationDuration="280"
-    app:hasClickableChildren="false"
+    app:hasClickableChildren="true"
     tools:context=".Map">
 
     <androidx.constraintlayout.widget.ConstraintLayout

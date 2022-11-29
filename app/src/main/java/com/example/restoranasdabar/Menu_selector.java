@@ -81,7 +81,7 @@ public class Menu_selector extends BottomSheetDialogFragment {
             @Override
             public void onClick(View view) {
                 ctx = getContext();
-                Intent intent = new Intent(ctx, OrderFood.class);
+                Intent intent = new Intent(ctx, Map.class);
                 intent.putExtra("table_json_string", arrayOfTablesString);
                 intent.putExtra("Time", selectedTime);
                 intent.putExtra("Date", data);

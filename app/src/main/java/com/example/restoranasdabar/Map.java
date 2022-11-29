@@ -32,7 +32,6 @@ public class Map extends AppCompatActivity {
                 button.setX(Float.parseFloat(tableArr.getJSONObject(i).getString("X")));
                 button.setWidth(Integer.parseInt(tableArr.getJSONObject(i).getString("Width")));
                 button.setHeight(Integer.parseInt(tableArr.getJSONObject(i).getString("Height")));
-                mapview.addView(button);
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -41,6 +40,8 @@ public class Map extends AppCompatActivity {
                         getApplicationContext().startActivity(intent);
                     }
                 });
+                mapview.addView(button);
+
             }
         } catch (JSONException e) {
             e.printStackTrace();
