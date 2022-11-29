@@ -27,6 +27,7 @@
         <activity
             android:name=".Map"
             android:exported="true"
+            android:theme="@style/Theme.AppCompat"
             android:parentActivityName=".Menu_restaurant">
             <meta-data
                 android:name="android.app.lib_name"
