@@ -3,11 +3,15 @@ package com.example.restoranasdabar;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +23,7 @@ import org.json.JSONException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 public class Map extends AppCompatActivity {
 
@@ -49,71 +54,106 @@ public class Map extends AppCompatActivity {
         imageView.setImageBitmap(gt.getImage());
         try {
             tableArr = new JSONArray(getIntent().getStringExtra("table_json_string"));
+            ArrayList<Rect> mAreas = new ArrayList<>();
 
-            for(int i=0;i<tableArr.length();i++){
-                Button button = new Button(getApplicationContext());
-                button.setY(Float.parseFloat(tableArr.getJSONObject(i).getString("y"))*2f);
-                button.setX(Float.parseFloat(tableArr.getJSONObject(i).getString("x"))*2f);
-                //button.setBackground(Drawable.createFromPath("?android:attr/selectableItemBackground"));
-                button.setText(String.valueOf(i+1));
-                button.setTextColor(getResources().getColor(R.color.black));
-                button.setTextSize(30);
-                button.setId(i+1);
-                button.setWidth(Math.round(Float.parseFloat(tableArr.getJSONObject(i).getString("Width"))));
-                button.setHeight(Math.round(Float.parseFloat(tableArr.getJSONObject(i).getString("Height"))));
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+            for(int i=0;i<tableArr.length();i++) {
+
+                int left = Math.round((Float.parseFloat(tableArr.getJSONObject(i).getString("x")) * 2f) - ((Float.parseFloat(tableArr.getJSONObject(i).getString("Width")))/2));
+                int top = Math.round((Float.parseFloat(tableArr.getJSONObject(i).getString("y")) * 2f) - ((Float.parseFloat(tableArr.getJSONObject(i).getString("Height")))/2));
+                int right = Math.round((Float.parseFloat(tableArr.getJSONObject(i).getString("x")) * 2f) + (Float.parseFloat(tableArr.getJSONObject(i).getString("Width"))));
+                int bottom = Math.round((Float.parseFloat(tableArr.getJSONObject(i).getString("y")) * 2f) + (Float.parseFloat(tableArr.getJSONObject(i).getString("Height"))));
+
+                System.out.println(left);
+                System.out.println(top);
+                System.out.println(right);
+                System.out.println(bottom);
 
 
-                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                switch (which){
-                                    case DialogInterface.BUTTON_POSITIVE:
-                                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                switch (which){
-                                                    case DialogInterface.BUTTON_POSITIVE:
+                mAreas.add(new Rect(left,top,right,bottom));
 
-                                                        Intent intent = new Intent(Map.this, OrderFood.class);
-                                                        intent.putExtra("table_json_string", getIntent().getStringExtra("table_json_string"));
-                                                        intent.putExtra("Time", getIntent().getStringExtra("Time"));
-                                                        intent.putExtra("Date", getIntent().getStringExtra("Date"));
-                                                        intent.putExtra("Menu_info", getIntent().getStringExtra("Menu_info"));
-                                                        intent.putExtra("Table_Num", button.getId());
-                                                        Map.this.startActivity(intent);
-                                                        break;
+                if (tableArr.getJSONObject(i).getString("Shape").equals("S")) {
 
-                                                    case DialogInterface.BUTTON_NEGATIVE:
 
-                                                        break;
+
+
+
+                }
+                    /*Button button = new Button(getApplicationContext());
+                    button.setY(Float.parseFloat(tableArr.getJSONObject(i).getString("y")) * 2f);
+                    button.setX(Float.parseFloat(tableArr.getJSONObject(i).getString("x")) * 2f);
+                    //button.setBackground(Drawable.createFromPath("?android:attr/selectableItemBackground"));
+                    button.setText(String.valueOf(i + 1));
+                    button.setTextColor(getResources().getColor(R.color.black));
+                    button.setTextSize(30);
+                    button.setId(i + 1);
+                    button.setWidth(Math.round(Float.parseFloat(tableArr.getJSONObject(i).getString("Width"))));
+                    button.setHeight(Math.round(Float.parseFloat(tableArr.getJSONObject(i).getString("Height"))));
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+
+                            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    switch (which) {
+                                        case DialogInterface.BUTTON_POSITIVE:
+                                            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    switch (which) {
+                                                        case DialogInterface.BUTTON_POSITIVE:
+
+                                                            Intent intent = new Intent(Map.this, OrderFood.class);
+                                                            intent.putExtra("table_json_string", getIntent().getStringExtra("table_json_string"));
+                                                            intent.putExtra("Time", getIntent().getStringExtra("Time"));
+                                                            intent.putExtra("Date", getIntent().getStringExtra("Date"));
+                                                            intent.putExtra("Menu_info", getIntent().getStringExtra("Menu_info"));
+                                                            intent.putExtra("Table_Num", button.getId());
+                                                            Map.this.startActivity(intent);
+                                                            break;
+
+                                                        case DialogInterface.BUTTON_NEGATIVE:
+
+                                                            break;
+                                                    }
                                                 }
-                                            }
-                                        };
+                                            };
 
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(Map.this);
-                                        builder.setMessage("Do you wish to order food as well?").setPositiveButton("Yes", dialogClickListener)
-                                                .setNegativeButton("No", dialogClickListener).show();
-                                        break;
+                                            AlertDialog.Builder builder = new AlertDialog.Builder(Map.this);
+                                            builder.setMessage("Do you wish to order food as well?").setPositiveButton("Yes", dialogClickListener)
+                                                    .setNegativeButton("No", dialogClickListener).show();
+                                            break;
 
-                                    case DialogInterface.BUTTON_NEGATIVE:
-                                        break;
+                                        case DialogInterface.BUTTON_NEGATIVE:
+                                            break;
+                                    }
                                 }
+                            };
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(Map.this);
+                            builder.setMessage("Reserve table " + button.getId() + "?").setPositiveButton("Yes", dialogClickListener)
+                                    .setNegativeButton("No", dialogClickListener).show();
+
+                        }
+                    });
+
+                    mapview.addView(button);*/
+
+                imageView.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        for (final Rect cRect : mAreas) {
+                            if (cRect.contains((int) event.getX(), (int) event.getY())) {
+                                Toast.makeText(Map.this, "AREA TOUCHED!!", Toast.LENGTH_SHORT).show();
+                                return true;
                             }
-                        };
-
-                        AlertDialog.Builder builder = new AlertDialog.Builder(Map.this);
-                        builder.setMessage("Reserve table " + button.getId() + "?").setPositiveButton("Yes", dialogClickListener)
-                                .setNegativeButton("No", dialogClickListener).show();
-
+                        }
+                        return false;
                     }
                 });
 
-                mapview.addView(button);
-
-            }
+                }
         } catch (JSONException e) {
             e.printStackTrace();
         }
