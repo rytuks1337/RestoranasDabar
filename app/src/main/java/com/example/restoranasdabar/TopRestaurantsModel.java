@@ -2,17 +2,16 @@ package com.example.restoranasdabar;
 
 import android.graphics.Bitmap;
 
-import org.json.JSONArray;
-
 public class TopRestaurantsModel {
     String name, location, number, schedule, about;
     Bitmap image;
-    String urls;
+    String urls;//json string
     String jsonMenu;//json string
-    String jsonTable;
+    String mapUrl;//json string
+    String jsonTable;//json string
     float rating;
 
-    public TopRestaurantsModel(String name, String location, String number, String schedule, Bitmap image, float rating, String about, String urls, String jsonMenu, String jsonTable) {
+    public TopRestaurantsModel(String name, String location, String number, String schedule, Bitmap image, float rating, String about, String urls, String jsonMenu, String jsonTable, String map_url) {
         this.name = name;
         this.location = location;
         this.number = number;
@@ -22,6 +21,7 @@ public class TopRestaurantsModel {
         this.image = image;
         this.jsonTable=jsonTable;
         this.rating = rating;
+        this.mapUrl=map_url;
         this.jsonMenu=jsonMenu;
     }
 
@@ -33,12 +33,12 @@ public class TopRestaurantsModel {
         this.name = name;
     }
 
-    public String getjsonMenu() {
-        return jsonMenu;
+    public String getMapUrl() {
+        return mapUrl;
     }
 
-    public void setjsonMenu(String jsonMenu) {
-        this.jsonMenu = jsonMenu;
+    public void setMapUrl(String mapUrl) {
+        this.mapUrl = mapUrl;
     }
 
     public String getLocation() {
@@ -103,5 +103,13 @@ public class TopRestaurantsModel {
 
     public void setJsonTable(String jsonTable) {
         this.jsonTable = jsonTable;
+    }
+
+    public String getJsonMenu() {
+        return jsonMenu;
+    }
+
+    public void setJsonMenu(String jsonMenu) {
+        this.jsonMenu = jsonMenu;
     }
 }
