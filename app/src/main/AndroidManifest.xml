@@ -19,7 +19,7 @@
         <activity
             android:name=".OrderFood"
             android:exported="true"
-            android:parentActivityName=".Menu_restaurant">
+            android:parentActivityName=".Map">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

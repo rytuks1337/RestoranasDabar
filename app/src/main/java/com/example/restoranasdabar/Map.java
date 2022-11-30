@@ -38,35 +38,55 @@ public class Map extends AppCompatActivity {
                 button.setText(String.valueOf(i+1));
                 button.setTextColor(R.color.black);
                 button.setTextSize(30);
+                button.setId(i+1);
                 button.setWidth(Integer.parseInt(tableArr.getJSONObject(i).getString("Width")));
                 button.setHeight(Integer.parseInt(tableArr.getJSONObject(i).getString("Height")));
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
-                        /*Intent intent = new Intent(ctx, OrderFood.class);
-                        intent.putExtra("table_json_string", getIntent().getStringExtra("table_json_string"));
-                        intent.putExtra("Time", getIntent().getStringExtra("Time"));
-                        intent.putExtra("Date", getIntent().getStringExtra("Date"));
-                        intent.putExtra("Menu_info", getIntent().getStringExtra("Menu_info"));
-                        ctx.startActivity(intent);*/
+
                         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 switch (which){
                                     case DialogInterface.BUTTON_POSITIVE:
-                                        //Yes button clicked
+                                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                switch (which){
+                                                    case DialogInterface.BUTTON_POSITIVE:
+
+                                                        Intent intent = new Intent(Map.this, OrderFood.class);
+                                                        intent.putExtra("table_json_string", getIntent().getStringExtra("table_json_string"));
+                                                        intent.putExtra("Time", getIntent().getStringExtra("Time"));
+                                                        intent.putExtra("Date", getIntent().getStringExtra("Date"));
+                                                        intent.putExtra("Menu_info", getIntent().getStringExtra("Menu_info"));
+                                                        intent.putExtra("Table_Num", button.getId());
+                                                        Map.this.startActivity(intent);
+                                                        break;
+
+                                                    case DialogInterface.BUTTON_NEGATIVE:
+
+
+                                                        break;
+                                                }
+                                            }
+                                        };
+
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(Map.this);
+                                        builder.setMessage("Do you wish to order food aswell?").setPositiveButton("Yes", dialogClickListener)
+                                                .setNegativeButton("No", dialogClickListener).show();
                                         break;
 
                                     case DialogInterface.BUTTON_NEGATIVE:
-                                        //No button clicked
                                         break;
                                 }
                             }
                         };
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(Map.this);
-                        builder.setMessage("Reserve table ?").setPositiveButton("Yes", dialogClickListener)
+                        builder.setMessage("Reserve table " + button.getId() + "?").setPositiveButton("Yes", dialogClickListener)
                                 .setNegativeButton("No", dialogClickListener).show();
 
                     }
