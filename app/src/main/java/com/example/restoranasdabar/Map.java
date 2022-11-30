@@ -30,7 +30,6 @@ public class Map extends AppCompatActivity {
         setContentView(R.layout.activity_map);
         mapview = findViewById(R.id.map_container);
         imageView= findViewById(R.id.zoomable_map);
-        Context ctx = getApplicationContext();
         JSONArray tableArr;
 
         GetDataFromWeb gt = new GetDataFromWeb();
@@ -55,7 +54,7 @@ public class Map extends AppCompatActivity {
                 Button button = new Button(getApplicationContext());
                 button.setY(Float.parseFloat(tableArr.getJSONObject(i).getString("y"))*2f);
                 button.setX(Float.parseFloat(tableArr.getJSONObject(i).getString("x"))*2f);
-                button.setBackground(Drawable.createFromPath("?android:attr/selectableItemBackground"));
+                //button.setBackground(Drawable.createFromPath("?android:attr/selectableItemBackground"));
                 button.setText(String.valueOf(i+1));
                 button.setTextColor(getResources().getColor(R.color.black));
                 button.setTextSize(30);
@@ -88,7 +87,6 @@ public class Map extends AppCompatActivity {
                                                         break;
 
                                                     case DialogInterface.BUTTON_NEGATIVE:
-
 
                                                         break;
                                                 }

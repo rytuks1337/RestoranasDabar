@@ -29,7 +29,7 @@ import java.util.List;
 public class Complete_registration extends BottomSheetDialogFragment {
 
     ArrayList<FoodModel> orderList;
-    TextView res_time, res_date;
+    TextView res_time, res_date, table_id;
     ArrayAdapter<String> adapter;
     ListView list;
     ArrayList<String> names;
@@ -47,6 +47,7 @@ public class Complete_registration extends BottomSheetDialogFragment {
         orderList = (ArrayList<FoodModel>) this.getArguments().getSerializable("orders");
         names = new ArrayList<String>();
 
+
         for(int i = 0; i < orderList.size(); i++)
         {
             names.add(orderList.get(i).getName());
@@ -54,11 +55,13 @@ public class Complete_registration extends BottomSheetDialogFragment {
 
         res_time = view.findViewById(R.id.reservation_time);
         res_date = view.findViewById(R.id.reservation_date);
+        table_id = view.findViewById(R.id.tableid);
         list = view.findViewById(R.id.foodOrder);
 
 
         res_time.setText(this.getArguments().getString("time"));
         res_date.setText(this.getArguments().getString("date"));
+        table_id.setText(this.getArguments().getString("table_id"));
 
         adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, names);
 
