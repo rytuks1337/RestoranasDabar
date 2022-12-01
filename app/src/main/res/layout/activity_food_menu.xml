@@ -19,7 +19,7 @@
             />
     </androidx.core.widget.NestedScrollView>
     <Button
-        android:id="@+id/orderbtn"
+        android:id="@+id/makeordBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 
@@ -28,7 +27,7 @@ public class OrderFood extends AppCompatActivity {
 
 
         menu_list = findViewById(R.id.menu_food_list);
-        orderbtn = findViewById(R.id.orderbtn);
+        orderbtn = findViewById(R.id.makeordBtn);
         orderbtn.setVisibility(View.VISIBLE);
 
         bundle = new Bundle();
@@ -78,6 +77,7 @@ public class OrderFood extends AppCompatActivity {
                 bottomSheet.show(getSupportFragmentManager(), "TAG");
                 System.out.println(order_list.size());
             }
+
         });
 
 
