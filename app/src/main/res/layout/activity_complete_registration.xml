@@ -44,15 +44,35 @@
         android:textColor="@color/black"
         android:textSize="18sp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
     <TextView
         android:id="@+id/ordered_food"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_margin="10dp"
         android:text="Ordered food:"
+        android:visibility="invisible"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:layout_height="wrap_content"
         android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:text="123"
+            android:visibility="invisible"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:drawableRight="@drawable/ic_baseline_euro_24"
+            />
+    </LinearLayout>
+
 
 
             <ListView
@@ -65,7 +85,7 @@
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Make a Reservation" />
 
 
 </LinearLayout>

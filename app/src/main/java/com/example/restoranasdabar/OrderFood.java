@@ -34,6 +34,7 @@ public class OrderFood extends AppCompatActivity {
         bundle = new Bundle();
         bundle.putString("time", getIntent().getStringExtra("Time"));
         bundle.putString("date", getIntent().getStringExtra("Date"));
+        bundle.putString("table",getIntent().getStringExtra("Table_Num") );
 
 
         food_list = new ArrayList<>();

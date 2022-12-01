@@ -30,6 +30,7 @@ public class Map extends AppCompatActivity {
 
     ImageView imageView;
     ConstraintLayout mapview;
+    Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +38,10 @@ public class Map extends AppCompatActivity {
         mapview = findViewById(R.id.map_container);
         imageView= findViewById(R.id.zoomable_map);
         JSONArray tableArr;
+
+        bundle = new Bundle();
+        bundle.putString("time", getIntent().getStringExtra("Time"));
+        bundle.putString("date",getIntent().getStringExtra("Date"));
 
         GetDataFromWeb gt = new GetDataFromWeb();
 
@@ -77,9 +82,8 @@ public class Map extends AppCompatActivity {
                     button.setLayoutParams(new ConstraintLayout.LayoutParams(w*2,h*2));
                 }
 
-                button.setText(String.valueOf(i + 1));
-                button.setTextColor(getResources().getColor(R.color.black));
-                button.setTextSize(30);
+                button.setBackground(Drawable.createFromPath("@drawable/ripple_anim"));
+
                 button.setId(i + 1);
 
                 button.setOnClickListener(new View.OnClickListener() {
@@ -103,11 +107,19 @@ public class Map extends AppCompatActivity {
                                                         intent.putExtra("Time", getIntent().getStringExtra("Time"));
                                                         intent.putExtra("Date", getIntent().getStringExtra("Date"));
                                                         intent.putExtra("Menu_info", getIntent().getStringExtra("Menu_info"));
-                                                        intent.putExtra("Table_Num", button.getId());
+                                                        intent.putExtra("Table_Num",String.valueOf( button.getId()));
+                                                        intent.putExtra("map_url",getIntent().getStringExtra("map_url"));
                                                         Map.this.startActivity(intent);
                                                         break;
 
                                                     case DialogInterface.BUTTON_NEGATIVE:
+
+                                                        bundle.putString("table", String.valueOf(button.getId()));
+
+
+                                                        Complete_registration bottomSheet = new Complete_registration();
+                                                        bottomSheet.setArguments(bundle);
+                                                        bottomSheet.show(getSupportFragmentManager(), "TAG");
 
                                                         break;
                                                 }
@@ -135,18 +147,6 @@ public class Map extends AppCompatActivity {
 
                 mapview.addView(button);
 
-               /* imageView.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        for (final Rect cRect : mAreas) {
-                            if (cRect.contains((int) event.getX(), (int) event.getY())) {
-                                Toast.makeText(Map.this, "AREA TOUCHED!!", Toast.LENGTH_SHORT).show();
-                                return true;
-                            }
-                        }
-                        return false;
-                    }
-                });*/
             }
         } catch (JSONException e) {
             e.printStackTrace();

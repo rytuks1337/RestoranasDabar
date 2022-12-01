@@ -29,8 +29,14 @@ import java.util.List;
 public class Complete_registration extends BottomSheetDialogFragment {
 
     ArrayList<FoodModel> orderList;
-    TextView res_time, res_date, table_id;
+    TextView res_time;
+    TextView res_date;
+    TextView price;
+    TextView table_id;
+    TextView ordered;
     ArrayAdapter<String> adapter;
+    BottomSheetBehavior<View> behavior;
+    float sum = 0;
     ListView list;
     ArrayList<String> names;
 
@@ -44,29 +50,46 @@ public class Complete_registration extends BottomSheetDialogFragment {
         View view = inflater.inflate(R.layout.activity_complete_registration, container, false);
 
 
+
+
         orderList = (ArrayList<FoodModel>) this.getArguments().getSerializable("orders");
+
         names = new ArrayList<String>();
-
-
-        for(int i = 0; i < orderList.size(); i++)
-        {
-            names.add(orderList.get(i).getName());
-        }
 
         res_time = view.findViewById(R.id.reservation_time);
         res_date = view.findViewById(R.id.reservation_date);
+        price = view.findViewById(R.id.price);
+        ordered = view.findViewById(R.id.ordered_food);
         table_id = view.findViewById(R.id.tableid);
         list = view.findViewById(R.id.foodOrder);
+
+        if(orderList != null) {
+            for (int i = 0; i < orderList.size(); i++) {
+                names.add(orderList.get(i).getName());
+                sum += (float) orderList.get(i).getPrice();
+            }
+            price.setVisibility(View.VISIBLE);
+            ordered.setVisibility(View.VISIBLE);
+        }
+
 
 
         res_time.setText(this.getArguments().getString("time"));
         res_date.setText(this.getArguments().getString("date"));
-        table_id.setText(this.getArguments().getString("table_id"));
+        table_id.setText(this.getArguments().getString("table"));
+        price.setText(String.valueOf(sum));
 
         adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, names);
 
         list.setAdapter(adapter);
 
         return view;
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle saved){
+        super.onViewCreated(view, saved);
+
+        behavior = BottomSheetBehavior.from((View) view.getParent());
+        behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
     }
 }
