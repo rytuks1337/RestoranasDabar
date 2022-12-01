@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -55,92 +56,86 @@ public class Map extends AppCompatActivity {
         try {
             tableArr = new JSONArray(getIntent().getStringExtra("table_json_string"));
             ArrayList<Rect> mAreas = new ArrayList<>();
+            float x,y;
+            int w,h;
+            for (int i = 0; i < tableArr.length(); i++) {
+                Button button = new Button(getApplicationContext());
+                x=Float.parseFloat(tableArr.getJSONObject(i).getString("x"));
+                y=Float.parseFloat(tableArr.getJSONObject(i).getString("y"));
+                w=Math.round(Float.parseFloat(tableArr.getJSONObject(i).getString("Width")));
+                h=Math.round(Float.parseFloat(tableArr.getJSONObject(i).getString("Height")));
 
-            for(int i=0;i<tableArr.length();i++) {
+                if(tableArr.getJSONObject(i).getString("Shape").equals("C")){
+                    button.setBackgroundResource(R.drawable.circle_button);
+                    button.setX(x*2-w);
+                    button.setY(y*2-h);
+                    button.setLayoutParams(new ConstraintLayout.LayoutParams(w*2,h*2));
 
-                int left = Math.round((Float.parseFloat(tableArr.getJSONObject(i).getString("x")) * 2f) - ((Float.parseFloat(tableArr.getJSONObject(i).getString("Width")))/2));
-                int top = Math.round((Float.parseFloat(tableArr.getJSONObject(i).getString("y")) * 2f) - ((Float.parseFloat(tableArr.getJSONObject(i).getString("Height")))/2));
-                int right = Math.round((Float.parseFloat(tableArr.getJSONObject(i).getString("x")) * 2f) + (Float.parseFloat(tableArr.getJSONObject(i).getString("Width"))));
-                int bottom = Math.round((Float.parseFloat(tableArr.getJSONObject(i).getString("y")) * 2f) + (Float.parseFloat(tableArr.getJSONObject(i).getString("Height"))));
-
-                System.out.println(left);
-                System.out.println(top);
-                System.out.println(right);
-                System.out.println(bottom);
-
-
-                mAreas.add(new Rect(left,top,right,bottom));
-
-                if (tableArr.getJSONObject(i).getString("Shape").equals("S")) {
-
-
-
-
-
+                }else{
+                    button.setX(x*2);
+                    button.setY(y*2-(h/2));
+                    button.setLayoutParams(new ConstraintLayout.LayoutParams(w*2,h*2));
                 }
-                    /*Button button = new Button(getApplicationContext());
-                    button.setY(Float.parseFloat(tableArr.getJSONObject(i).getString("y")) * 2f);
-                    button.setX(Float.parseFloat(tableArr.getJSONObject(i).getString("x")) * 2f);
-                    //button.setBackground(Drawable.createFromPath("?android:attr/selectableItemBackground"));
-                    button.setText(String.valueOf(i + 1));
-                    button.setTextColor(getResources().getColor(R.color.black));
-                    button.setTextSize(30);
-                    button.setId(i + 1);
-                    button.setWidth(Math.round(Float.parseFloat(tableArr.getJSONObject(i).getString("Width"))));
-                    button.setHeight(Math.round(Float.parseFloat(tableArr.getJSONObject(i).getString("Height"))));
-                    button.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
+
+                button.setText(String.valueOf(i + 1));
+                button.setTextColor(getResources().getColor(R.color.black));
+                button.setTextSize(30);
+                button.setId(i + 1);
+
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
 
-                            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    switch (which) {
-                                        case DialogInterface.BUTTON_POSITIVE:
-                                            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialog, int which) {
-                                                    switch (which) {
-                                                        case DialogInterface.BUTTON_POSITIVE:
+                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch (which) {
+                                    case DialogInterface.BUTTON_POSITIVE:
+                                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                switch (which) {
+                                                    case DialogInterface.BUTTON_POSITIVE:
 
-                                                            Intent intent = new Intent(Map.this, OrderFood.class);
-                                                            intent.putExtra("table_json_string", getIntent().getStringExtra("table_json_string"));
-                                                            intent.putExtra("Time", getIntent().getStringExtra("Time"));
-                                                            intent.putExtra("Date", getIntent().getStringExtra("Date"));
-                                                            intent.putExtra("Menu_info", getIntent().getStringExtra("Menu_info"));
-                                                            intent.putExtra("Table_Num", button.getId());
-                                                            Map.this.startActivity(intent);
-                                                            break;
+                                                        Intent intent = new Intent(Map.this, OrderFood.class);
+                                                        intent.putExtra("table_json_string", getIntent().getStringExtra("table_json_string"));
+                                                        intent.putExtra("Time", getIntent().getStringExtra("Time"));
+                                                        intent.putExtra("Date", getIntent().getStringExtra("Date"));
+                                                        intent.putExtra("Menu_info", getIntent().getStringExtra("Menu_info"));
+                                                        intent.putExtra("Table_Num", button.getId());
+                                                        Map.this.startActivity(intent);
+                                                        break;
 
-                                                        case DialogInterface.BUTTON_NEGATIVE:
+                                                    case DialogInterface.BUTTON_NEGATIVE:
 
-                                                            break;
-                                                    }
+                                                        break;
                                                 }
-                                            };
+                                            }
+                                        };
 
-                                            AlertDialog.Builder builder = new AlertDialog.Builder(Map.this);
-                                            builder.setMessage("Do you wish to order food as well?").setPositiveButton("Yes", dialogClickListener)
-                                                    .setNegativeButton("No", dialogClickListener).show();
-                                            break;
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(Map.this);
+                                        builder.setMessage("Do you wish to order food as well?").setPositiveButton("Yes", dialogClickListener)
+                                                .setNegativeButton("No", dialogClickListener).show();
+                                        break;
 
-                                        case DialogInterface.BUTTON_NEGATIVE:
-                                            break;
-                                    }
+                                    case DialogInterface.BUTTON_NEGATIVE:
+                                        break;
                                 }
-                            };
+                            }
+                        };
 
-                            AlertDialog.Builder builder = new AlertDialog.Builder(Map.this);
-                            builder.setMessage("Reserve table " + button.getId() + "?").setPositiveButton("Yes", dialogClickListener)
-                                    .setNegativeButton("No", dialogClickListener).show();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Map.this);
+                        builder.setMessage("Reserve table " + button.getId() + "?").setPositiveButton("Yes", dialogClickListener)
+                                .setNegativeButton("No", dialogClickListener).show();
 
-                        }
-                    });
+                    }
+                });
 
-                    mapview.addView(button);*/
 
-                imageView.setOnTouchListener(new View.OnTouchListener() {
+                mapview.addView(button);
+
+               /* imageView.setOnTouchListener(new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {
                         for (final Rect cRect : mAreas) {
@@ -151,9 +146,8 @@ public class Map extends AppCompatActivity {
                         }
                         return false;
                     }
-                });
-
-                }
+                });*/
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
